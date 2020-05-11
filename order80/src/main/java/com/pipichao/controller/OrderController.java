@@ -1,5 +1,6 @@
 package com.pipichao.controller;
 
+import com.netflix.loadbalancer.IRule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -29,8 +30,13 @@ public class OrderController {
     }
 
     @Bean
+    //新的eurekaclient 自动集成了 ribbon 的jar 包，不需要手动导入
     @LoadBalanced//多个同服务名的微服务注册之后得开启负载均衡，否则报错 找不到主机
     public RestTemplate restTemplate (){
         return new RestTemplate();
     }
+
+
+    ///IRule 负载均衡算法接口
+
 }
