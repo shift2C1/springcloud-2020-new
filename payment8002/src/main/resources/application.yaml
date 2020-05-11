@@ -1,0 +1,17 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-payment-service
+
+#注册服务
+eureka:
+  client:
+#    注册到eureka
+    register-with-eureka: true
+#    是否从eureka 抓取自己的注册信息，单节点无所谓，集群必须配置为true 才可以实现负载均衡
+    fetch-registry: true
+    service-url:
+      #      注册中心地址
+      defaultZone: http://127.0.0.1:7001/eureka
