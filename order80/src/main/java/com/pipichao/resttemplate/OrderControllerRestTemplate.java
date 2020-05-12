@@ -1,6 +1,5 @@
-package com.pipichao.controller;
+package com.pipichao.resttemplate;
 
-import com.netflix.loadbalancer.IRule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -11,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @Slf4j
-public class OrderController {
+public class OrderControllerRestTemplate {
     /**
      * 以服务名的方式调用
      * */
@@ -19,6 +18,7 @@ public class OrderController {
     //CLOUD-PAYMENT-SERVICE
     //cloud-payment-service
 
+    //使用 restTemplate 实现远程微服务调用
     @Autowired
     private RestTemplate restTemplate;
     @RequestMapping("/order")

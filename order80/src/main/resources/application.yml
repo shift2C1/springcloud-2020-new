@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: cloud-order-service
+#    只是测试用，因为这里将feign的服务注册到了两个包中
+  main:
+    allow-bean-definition-overriding: true
 
 #注册服务
 eureka:
@@ -13,5 +16,14 @@ eureka:
     #    是否从eureka 抓取自己的注册信息，单节点无所谓，集群必须配置为true 才可以实现负载均衡
     fetch-registry: true
     service-url:
-      #      注册中心地址
+      #      注册中心地址:不集群地址为自己的地址，集群写其他注册中心的列表（数组）
       defaultZone: http://127.0.0.1:7001/eureka
+#ribbon:
+        ###  读取超时时间，这里的两个配置没起作用
+        ##  ReadTimeout: 5000
+      ###  连接的超时时间
+      ##  ConnectTimeout: 5000
+#      //Hystrix 断路器启动
+feign:
+  hystrix:
+    enabled: true

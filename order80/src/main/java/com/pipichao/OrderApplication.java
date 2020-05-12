@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.pipichao.resttemplate"})
 @EnableEurekaClient
 
 //指定负载均衡算法:配置类不要放到@ComponentScan 能扫到的包，不然会整个ribbon 客户端都会采用该算法
