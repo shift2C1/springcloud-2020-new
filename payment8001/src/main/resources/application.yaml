@@ -16,4 +16,7 @@ eureka:
       #      注册中心地址
       defaultZone: http://127.0.0.1:7001/eureka
 
-
+#开启服务熔断
+feign:
+  hystrix:
+    enabled: true

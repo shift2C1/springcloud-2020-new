@@ -9,28 +9,21 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>payment8001</artifactId>
+    <artifactId>cloudgateway</artifactId>
 
     <dependencies>
-        <!--实体类，工具类的子工程-->
+        <!--网关，不再用zuul，使用spring提供的gateway-->
         <dependency>
-            <groupId>com.pipichao</groupId>
-            <artifactId>commons</artifactId>
-            <version>f.v</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+
     </dependencies>
+
+
 
 </project>
