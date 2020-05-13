@@ -3,6 +3,41 @@ server:
 spring:
   application:
     name: cloud-gateway
+
+  cloud:
+#    网关路由
+    gateway:
+      discovery:
+        locator:
+#          开启从注册中心动态创建路由，通过服务名字进行路由
+          enabled: true
+      routes:
+#        - 直接通过网关访问 http://localhost:9527/payOrder
+        - id: payment8001 # 随便起，但是保证唯一
+#          uri: http://localhost:8001
+#          通过微服务名字映射,lb 负载均衡
+          uri: lb://cloud-payment-service
+#          一些断言验证，全部条件符合才可以通过验证
+          predicates:
+            - Path=/payOrder/**
+#            - Before=2020-05-13T15:27:47.642+08:00[Asia/Shanghai]
+#            - Cookie:key=value # 必须附带cookie，可以由通配符配置
+#            - ......
+
+#  : Loaded RoutePredicateFactory [After]
+#  启动网关的日部分志:也就是断言的几个参数：
+# Loaded RoutePredicateFactory [Before]
+#Loaded RoutePredicateFactory [Between]
+#Loaded RoutePredicateFactory [Cookie]
+# Loaded RoutePredicateFactory [Header]
+#Loaded RoutePredicateFactory [Host]
+#Loaded RoutePredicateFactory [Method]
+#Loaded RoutePredicateFactory [Path]
+# Loaded RoutePredicateFactory [Query]
+#Loaded RoutePredicateFactory [ReadBodyPredicateFactory]
+#Loaded RoutePredicateFactory [RemoteAddr]
+#Loaded RoutePredicateFactory [Weight]
+#Loaded RoutePredicateFactory [CloudFoundryRouteService]
 eureka:
   client:
 #    注册到注册中心
