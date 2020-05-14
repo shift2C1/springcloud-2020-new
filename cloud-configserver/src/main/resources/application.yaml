@@ -1,0 +1,32 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+#        git仓库的地址
+        git:
+          uri: https://github.com/shift2C1/springcloudconfig.git #https
+#          uri: git@github.com:shift2C1/springcloudconfig.git # ssh
+#            搜索的路径
+          search-paths:
+            - springcloudconfig
+          username: shift2C1@163.com
+          password: Wc201410203037
+      #            读取的分支
+      label: master
+#访问配置中心地址：http://localhost:3344/master/config.yaml 看到远程github仓库的配置文件
+#{"name":"master","profiles":["config.yaml"],"label":null,"version":"a2b848371cc2607d6440c23edef314462e98f45b","state":null,"propertySources":[]}
+
+#注册到注册中心
+eureka:
+  client:
+    #    注册到eureka
+    register-with-eureka: true
+    #    是否从eureka 抓取自己的注册信息，单节点无所谓，集群必须配置为true 才可以实现负载均衡
+    fetch-registry: true
+    service-url:
+      #      注册中心地址:不集群地址为自己的地址，集群写其他注册中心的列表（数组）
+      defaultZone: http://127.0.0.1:7001/eureka
